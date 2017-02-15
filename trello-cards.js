@@ -184,8 +184,9 @@
     var cardno;
     var front_page;
     var back_page;
+    var length = fronts.length - 1 + (4-(fronts.length - 1)%4);
 
-    for (cardno = 0; cardno < fronts.length; cardno++) {
+    for (cardno = 0; cardno < length; cardno++) {
       if ((cardno % 4) === 0) {
         front_page = $('<div class="page fronts"></div>');
         main.append(front_page);
@@ -194,7 +195,7 @@
         main.append(back_page);
       }
       front_page.append(fronts[cardno]);
-      back_page.append(backs[cardno]);
+      back_page.append(backs[cardno - (cardno % 2) + (1- (cardno % 2))]);
     }
   }
 
